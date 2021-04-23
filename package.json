@@ -1,0 +1,19 @@
+{
+  "name": "shielkwamm",
+  "version": "0.0.1",
+  "description": "=== shielkwamm ===",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shielkwamm/shielkwamm.git"
+  },
+  "author": "shielkwamm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shielkwamm/shielkwamm/issues"
+  },
+  "homepage": "https://github.com/Shielkwamm/shielkwamm#readme"
+}
