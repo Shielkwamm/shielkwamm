@@ -17,7 +17,12 @@ type AnimatedTextTextProps = {
 }
 
 type AnimatedText = {
-  keyFrames: Object;
+  keyFrames: Array<KeyFrame>;
+}
+
+type KeyFrame = {
+  speed:number,
+  wait:number
 }
 
 const AnimatedTextText = ({ animatedText }: AnimatedTextTextProps) => {
@@ -29,7 +34,7 @@ const AnimatedTextText = ({ animatedText }: AnimatedTextTextProps) => {
   const keyFrames = animatedText.keyFrames;
   const [animationStopped, setAnimationStopped] = useState(false);
  
-  const setFrameEnd = ( frameLength ) => {
+  const setFrameEnd = ( frameLength:number ) => {
     return new Promise(r => setTimeout(r, frameLength));
   }
 
@@ -41,7 +46,7 @@ const AnimatedTextText = ({ animatedText }: AnimatedTextTextProps) => {
     })
   }
   
-  const setNextState = (currentTextIndex) => {
+  const setNextState = (currentTextIndex:number) => {
     const newFrame = getNextState(currentTextIndex, keyFrames);
     setCurrentTextIndex(newFrame);
     startTimer();
@@ -60,6 +65,7 @@ const AnimatedTextText = ({ animatedText }: AnimatedTextTextProps) => {
   )
 }
 
-const getNextState = (currentTextIndex, keyFrames) => {
+
+const getNextState = (currentTextIndex:number, keyFrames:Array<number>) => {
   return (currentTextIndex >= keyFrames.length - 1)? 0: currentTextIndex + 1
 }

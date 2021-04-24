@@ -1,5 +1,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var jsxRuntime = require('react/jsx-runtime');
 var react = require('react');
 
 function processText(text) {
@@ -29,40 +30,23 @@ function getKeyFrameLength(interval, wait, speed = 1) {
 
 const AnimatedText = ({ text }) => {
     const animatedText = processText(text);
-    return (React.createElement(AnimatedTextText, { animatedText: animatedText }));
+    return (jsxRuntime.jsx(AnimatedTextText, { animatedText: animatedText }, void 0));
 };
 const AnimatedTextText = ({ animatedText }) => {
-    const frameRate = 12;
-    const interval = 60000 / frameRate;
     const [currentTextIndex, setCurrentTextIndex] = react.useState(0);
     const textState = animatedText.keyFrames[currentTextIndex];
-    const keyFrames = animatedText.keyFrames;
-    const [animationStopped, setAnimationStopped] = react.useState(false);
-    const setFrameEnd = (frameLength) => {
-        return new Promise(r => setTimeout(r, frameLength));
-    };
-    const startTimer = () => {
-        setFrameEnd(getKeyFrameLength(interval, textState.wait)).then(() => {
-            if (!animationStopped) {
-                setNextState(currentTextIndex);
-            }
-        });
-    };
-    const setNextState = (currentTextIndex) => {
-        const newFrame = getNextState(currentTextIndex, keyFrames);
-        setCurrentTextIndex(newFrame);
-        startTimer();
-    };
-    react.useEffect(() => {
-        startTimer();
-    }, []);
-    return (React.createElement("pre", null, textState.text));
+    animatedText.keyFrames;
+    react.useState(false);
+    /*useEffect(() => {
+      startTimer();
+    }, []);*/
+    return (jsxRuntime.jsx("pre", { children: textState.text }, void 0));
 };
-const getNextState = (currentTextIndex, keyFrames) => {
-    return (currentTextIndex >= keyFrames.length - 1) ? 0 : currentTextIndex + 1;
-};
+
+const shTest = () => (jsxRuntime.jsx("h1", { children: "yo" }, void 0));
 
 exports.AnimatedText = AnimatedText;
 exports.getKeyFrameLength = getKeyFrameLength;
 exports.processText = processText;
+exports.shTest = shTest;
 //# sourceMappingURL=index.js.map
